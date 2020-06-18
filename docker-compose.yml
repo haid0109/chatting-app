@@ -1,0 +1,11 @@
+version: '3'
+services:
+    postgresql:
+        image: 'postgres'
+        restart: always
+        environment:
+            - POSTGRES_USER=haidar
+            - POSTGRES_PASSWORD=Passw0rd
+            - POSTGRES_DB=chattingApp
+        ports:
+            - 8624:5432
