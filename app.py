@@ -24,5 +24,17 @@ except Exception as error:
     con.rollback()
     print(f'could not create table users: {error}')
 
+try:
+    cur.execute('''
+        INSERT INTO
+        "users" ("username", "password")
+        values (%s, %s)
+        ;''', ('haidar2', 'Passw0rd')
+    )
+except Exception as error:
+    con.rollback()
+    print(f'could not insert user into user table: {error}')
+
+con.commit()
 cur.close()
 con.close()
