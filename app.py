@@ -59,6 +59,16 @@ except Exception as error:
     con.rollback()
     print(f'could not update users table: {error}')
 
+try:
+    cur.execute('''
+        DELETE FROM users
+        WHERE "id" = %s
+        ;''', ('18',)
+    )
+except Exception as error:
+    con.rollback()
+    print(f'could not delete user: {error}')
+
 con.commit()
 cur.close()
 con.close()
