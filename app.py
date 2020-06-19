@@ -48,6 +48,17 @@ except Exception as error:
     con.rollback()
     print(f'could not fetch users: {error}')
 
+try:
+    cur.execute('''
+        UPDATE "users"
+        set "username" = %s
+        where "id" = %s
+        ;''', ('hej5', '18')
+    )
+except Exception as error:
+    con.rollback()
+    print(f'could not update users table: {error}')
+
 con.commit()
 cur.close()
 con.close()
