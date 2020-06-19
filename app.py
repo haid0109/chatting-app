@@ -35,6 +35,19 @@ except Exception as error:
     con.rollback()
     print(f'could not insert user into user table: {error}')
 
+try:
+    cur.execute('''
+        SELECT "id", "username", "password"
+        FROM "users"
+        ;'''
+    )
+    rows = cur.fetchall()
+    for row in rows:
+        print(f'''id {row[0]}\n username {row[1]}\n password {row[2]}\n''')
+except Exception as error:
+    con.rollback()
+    print(f'could not fetch users: {error}')
+
 con.commit()
 cur.close()
 con.close()
